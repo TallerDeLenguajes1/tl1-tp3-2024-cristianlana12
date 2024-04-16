@@ -7,6 +7,8 @@ void mostrarMatriz(int matriz[5][12]);
 
 void promedioAnioMatriz(int matriz[5][12]);
 
+void menorMayorMatriz(int matriz[5][12]);
+
 void main(){
     int matriz[5][12];
     int limInf, limSup;
@@ -19,6 +21,7 @@ void main(){
     cargadoMatrizNumAle(matriz, limInf, limSup);
     mostrarMatriz(matriz);
     promedioAnioMatriz(matriz);
+    menorMayorMatriz(matriz);
 }
 
 
@@ -57,4 +60,32 @@ void promedioAnioMatriz(int matriz[5][12]){
         printf("\nEl calor del año %d es: %.2f", i,prom);
         sum = 0;
     }
+}
+
+void menorMayorMatriz(int matriz[5][12]){
+    int anioMayor, mesMayor, mayor = 0, menor = matriz[0][0];
+    int anioMenor, mesMenor;
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 12; j++)
+        {
+            if (matriz[i][j] > mayor)   
+            {
+                mayor = matriz[i][j];
+                mesMayor = j;
+                anioMayor = i;
+            }
+
+            if (menor > matriz[i][j])
+            {
+                menor = matriz[i][j];
+                mesMenor = j;
+                anioMenor = i;
+            }
+        }
+    }
+
+
+    
 }
