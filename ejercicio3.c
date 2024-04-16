@@ -15,6 +15,10 @@ void main(){
         strcpy(Nombres[i], buffer);
 
         printf("%s", Nombres[i]);
+
+        free(Nombres[i]);
     }
+    free(buffer);
+    free(Nombres);
     
 }
