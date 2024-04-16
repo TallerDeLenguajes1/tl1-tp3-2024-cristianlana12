@@ -13,6 +13,8 @@ void main(){
        int longNombre = strlen(buffer) + 1;
        Nombres[i] = (char *)malloc(longNombre * sizeof(char));
         strcpy(Nombres[i], buffer);
+
+        printf("%s", Nombres[i]);
     }
     
 }
