@@ -22,25 +22,38 @@ char *tipoProductos[] = {"Galletas", "Snack", "Cigarrillos", "Caramelos", "Bebid
 
 void main()
 {
-    int cantidadClientes;
-    char *auxNombre;
-
-    printf("ingresar la cantidad de clientes: ");
-    scanf("%d", &cantidadClientes);
+    int cantidadClientes = 1 + rand() % (5 - 1 + 1);
+    char *auxNombre = (char *)malloc(100 * sizeof(char));
 
     Cliente *clientes;
-    clientes = (Cliente *)malloc(cantidadClientes * sizeof(clientes));
+    clientes = (Cliente *)malloc(cantidadClientes * sizeof(Cliente));
 
     for (int i = 0; i < cantidadClientes; i++)
     {
-        printf("\nIngresar nombre del cliente: ");
-        scanf("%s", &auxNombre);
+        printf("\nIngresar nombre del cliente[%d]: ", i);
+        scanf("%s", auxNombre);
+        int indiceAleatorio = 0 + rand() % (4 - 0 + 1); 
         int longNombre = strlen(auxNombre) + 1;
-        clientes->nombreCliente = (char *)malloc(longNombre * sizeof(char));
-        strcpy(clientes->nombreCliente,auxNombre);
+        clientes[i].nombreCliente = (char *)malloc(longNombre * sizeof(char));
+        strcpy(clientes[i].nombreCliente, auxNombre);
 
-        clientes->cantidadProductosAPedir = 0 + rand()%(8 - 0 + 1);
-        clientes->Producto=(Producto *)malloc(clientes->cantidadProductosAPedir * sizeof(Producto ));
-        
+        clientes[i].clienteId = i;
+
+        clientes[i].cantidadProductosAPedir = 1 + rand() % (5 - 1 + 1);
+
+        clientes[i].Producto = (Producto *)malloc(clientes[i].cantidadProductosAPedir * sizeof(Producto));
+
+        clientes[i].Producto[i].productoId = i;
+        clientes[i].Producto[i].cantidad = 1 + rand() % (10 - 1 + 1);
+        char *TipoProd = (char *)malloc(50 * sizeof(char));
+        strcpy(TipoProd, tipoProductos[indiceAleatorio]);
+        int longitudTipo = strlen(TipoProd) + 1;
+
+        clientes[i].Producto[i].tipoProducto = (char *)malloc(longitudTipo * sizeof(char));
+        strcpy(clientes[i].Producto[i].tipoProducto , TipoProd );
+
+        clientes[i].Producto[i].precioUnitario = 10 + rand() % (100 - 10 + 1);
     }
+
+    
 }
