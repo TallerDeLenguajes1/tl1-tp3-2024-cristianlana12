@@ -39,8 +39,8 @@ void main()
         clientes->nombreCliente = (char *)malloc(longNombre * sizeof(char));
         strcpy(clientes->nombreCliente,auxNombre);
 
-        //int cantProductos = 0 + rand()%(8 - 0 + 1);
-        //clientes->Producto=(Producto *)malloc(cantProductos * sizeof(Producto ));
-
+        clientes->cantidadProductosAPedir = 0 + rand()%(8 - 0 + 1);
+        clientes->Producto=(Producto *)malloc(clientes->cantidadProductosAPedir * sizeof(Producto ));
+        
     }
 }
