@@ -18,6 +18,8 @@ struct
     Producto *Producto;
 } typedef Cliente;
 
+void total(Producto Producto);
+
 char *tipoProductos[] = {"Galletas", "Snack", "Cigarrillos", "Caramelos", "Bebidas"};
 
 void main()
@@ -61,12 +63,24 @@ void main()
 
     for (int i = 0; i < cantidadClientes; i++)
     {
+        float totalPrecio = 0;
         printf("\n\nEl cliente ### %s ### tiene %d productos: ", clientes[i].nombreCliente, clientes[i].cantidadProductosAPedir);
         for (int j = 0; j < clientes[i].cantidadProductosAPedir; j++)
         {
             printf("\n\nTipo de producto: %s", clientes[i].Producto[j].tipoProducto);
             printf("\nCantidad: %d", clientes[i].Producto[j].cantidad);
             printf("\nPrecio Unitario: %.2f", clientes[i].Producto[j].precioUnitario);
+            total(clientes[i].Producto[j]);
+            totalPrecio = totalPrecio + (clientes[i].Producto[j].cantidad * clientes[i].Producto[j].precioUnitario);
         }
+        
+        printf("\nEl total a pagar de ### %s ### es: %.2f", clientes[i].nombreCliente ,totalPrecio);
     }
+}
+
+
+void total(Producto Producto){
+    float total = 0;
+    total = (Producto.cantidad) * (Producto.precioUnitario);
+    printf("\nEl total a pagar de este producto es: %.2f", total);
 }
